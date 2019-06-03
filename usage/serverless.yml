@@ -23,3 +23,9 @@ functions:
       - http:
           method: get
           path: protected
+  withApiKeyModified:
+    handler: functions/withApiKeyModified.handler
+    events:
+      - http:
+          method: get
+          path: protected-mod
