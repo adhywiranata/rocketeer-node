@@ -11,9 +11,15 @@ provider:
   runtime: nodejs8.10
 
 functions:
-  hello:
+  basic:
     handler: functions/basic.handler
     events:
       - http:
           method: get
           path: basic
+  withApiKey:
+    handler: functions/withApiKey.handler
+    events:
+      - http:
+          method: get
+          path: protected
