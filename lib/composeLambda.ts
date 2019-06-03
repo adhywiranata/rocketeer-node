@@ -2,7 +2,7 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import Middy from 'middy';
 import { doNotWaitForEmptyEventLoop } from 'middy/middlewares';
 
-import { interceptWarmer as interceptWarmerMiddleware } from './middlewares';
+import { interceptWarmerMiddleware, noopMiddleware } from './middlewares';
 
 interface ILambdaOptions {
   applyWarmer?: boolean;
@@ -29,8 +29,8 @@ const lambda = (
 ) => {
   return [
     ...defaultMiddlewares,
-    middlewares,
-    options.applyWarmer ? interceptWarmerMiddleware : null,
+    ...middlewares,
+    options.applyWarmer ? interceptWarmerMiddleware() : noopMiddleware(),
   ].reduce(applyMiddleware, Middy(handlerFunc));
 };
 

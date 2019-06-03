@@ -1,5 +1,2 @@
-import { lambda } from './composeLambda';
-
-export {
-  lambda,
-};
+export * from './middlewares';
+export * from './composeLambda';
