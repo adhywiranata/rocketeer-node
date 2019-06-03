@@ -1,9 +1,9 @@
-const createLambda = () => {
+const composeLambda = () => {
   return () => {
     return 'rocketeer';
   };
 };
 
 export {
-  createLambda,
+  composeLambda,
 };
