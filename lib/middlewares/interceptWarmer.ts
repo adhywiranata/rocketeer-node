@@ -1,7 +1,6 @@
 import * as warmer from 'lambda-warmer';
 import { HandlerLambda } from 'middy';
 
-import constant from '../constants';
 import utils from '../utils';
 
 export default () => ({
