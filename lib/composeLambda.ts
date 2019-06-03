@@ -1,5 +1,5 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import * as Middy from 'middy';
+import Middy from 'middy';
 import { doNotWaitForEmptyEventLoop } from 'middy/middlewares';
 
 import { interceptWarmer as interceptWarmerMiddleware } from './middlewares';

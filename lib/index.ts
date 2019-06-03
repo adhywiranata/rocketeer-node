@@ -1,9 +1,5 @@
-const composeLambda = () => {
-  return () => {
-    return 'rocketeer';
-  };
-};
+import { lambda } from './composeLambda';
 
 export {
-  composeLambda,
+  lambda,
 };
