@@ -1,12 +1,15 @@
 language: node_js
 node_js:
   - "11"
+cache:
+  directories:
+    - node_modules
 install:
   - npm install
+  - npm install -g serverless
   - cd service
   - npm install
+  - sls deploy
   - cd ..
-before_script:
-  - npm start &
 script:
   - npm test

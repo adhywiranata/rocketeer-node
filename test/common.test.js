@@ -1,7 +1,7 @@
 const request = require('supertest');
 const expect = require('chai').expect;
 
-const server = request('http://localhost:1234');
+const server = request(process.env.SERVICE_ENDPOINT);
 
 describe('GET /basic', function () {
   it('respond correctly', function (done) {
