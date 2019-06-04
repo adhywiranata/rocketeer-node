@@ -52,11 +52,11 @@ describe('GET /protected-mod', function () {
 });
 
 describe('GET non-existent route', function () {
-  it('respond not found correctly', function (done) {
+  it('respond forbidden correctly', function (done) {
     server
       .get('/nothing-here')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
-      .expect(404, done);
+      .expect(403, done);
   });
 });
