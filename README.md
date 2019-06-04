@@ -17,3 +17,5 @@ We're building Rocketeer to solve common serverless problem:
 
 - [ ] Middy
 - [ ] Lambda Warmer
+- [ ] Joi
+- [ ] Lodash

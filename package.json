@@ -1,7 +1,7 @@
 {
   "name": "rocketeer-node",
-  "version": "0.0.1",
-  "description": "aws lambda utils library",
+  "version": "0.1.0",
+  "description": "aws lambda wrapper library",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -16,8 +16,8 @@
     "type": "git",
     "url": "git+https://github.com/kodeid/rocketeer-node.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "KODE Engineering",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/kodeid/rocketeer-node/issues"
   },
