@@ -5,7 +5,7 @@ import utils from '../utils';
 
 export default (apiKey: string, apiKeyHeaderKey?: string) => ({
   before: (handler: HandlerLambda) => new Promise((resolve, reject) => {
-    if (handler.event.headers[apiKeyHeaderKey || 'api-app-key'] === apiKey) {
+    if (handler.event.headers[apiKeyHeaderKey || 'Api-App-Key'] === apiKey) {
       return resolve();
     }
 
