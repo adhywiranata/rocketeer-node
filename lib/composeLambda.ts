@@ -1,8 +1,18 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import Middy from 'middy';
-import { doNotWaitForEmptyEventLoop } from 'middy/middlewares';
+import {
+  doNotWaitForEmptyEventLoop,
+  httpErrorHandler,
+  httpEventNormalizer,
+  httpHeaderNormalizer,
+  httpSecurityHeaders,
+  jsonBodyParser,
+} from 'middy/middlewares';
 
-import { interceptWarmerMiddleware, noopMiddleware } from './middlewares';
+import {
+  noopMiddleware,
+  warmerInterceptorMiddleware,
+} from './middlewares';
 
 interface ILambdaOptions {
   applyWarmer?: boolean;
@@ -12,6 +22,11 @@ type Middleware =  Middy.MiddlewareObject<any, any>;
 
 const defaultMiddlewares = [
   doNotWaitForEmptyEventLoop({ runOnError: true }),
+  jsonBodyParser(),
+  httpEventNormalizer(),
+  httpHeaderNormalizer(),
+  httpSecurityHeaders(),
+  httpErrorHandler(),
 ];
 
 const defaultOptions: ILambdaOptions = {
@@ -30,7 +45,7 @@ const lambda = (
   return [
     ...defaultMiddlewares,
     ...middlewares,
-    options.applyWarmer ? interceptWarmerMiddleware() : noopMiddleware(),
+    options.applyWarmer ? warmerInterceptorMiddleware() : noopMiddleware(),
   ].reduce(applyMiddleware, Middy(handlerFunc));
 };
 

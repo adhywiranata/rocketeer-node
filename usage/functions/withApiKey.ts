@@ -1,7 +1,7 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
 
 import {
-  apiKeyAuthorizationMiddleware,
+  apiKeyAuthorizerMiddleware,
   lambda,
 } from '../../dist';
 
@@ -16,5 +16,5 @@ const withApiKeyHandler: APIGatewayProxyHandler = async (event, context) => {
 };
 
 export const handler = lambda(withApiKeyHandler, [
-  apiKeyAuthorizationMiddleware('dont-use-hard-coded-value-like-me'),
+  apiKeyAuthorizerMiddleware('dont-use-hard-coded-value-like-me'),
 ]);
