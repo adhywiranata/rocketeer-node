@@ -10,7 +10,7 @@
     "test": "node_modules/.bin/mocha test",
     "build": "npm run lint && rm -rf ./dist && node_modules/.bin/tsc",
     "lint": "node_modules/.bin/tslint -c tslint.json 'lib/**/*.ts'",
-    "start-dev-api": "cd usage && node_modules/.bin/sls offline"
+    "start-dev-api": "cd service && node_modules/.bin/sls offline"
   },
   "repository": {
     "type": "git",
