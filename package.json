@@ -10,7 +10,7 @@
     "test": "node_modules/.bin/mocha test",
     "build": "npm run lint && rm -rf ./dist && node_modules/.bin/tsc",
     "lint": "node_modules/.bin/tslint -c tslint.json 'lib/**/*.ts'",
-    "start-dev-api": "cd service && node_modules/.bin/sls offline"
+    "start": "npm run build && cd service && node_modules/.bin/sls offline --port 1234"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,9 @@
   "devDependencies": {
     "@types/node": "^12.0.4",
     "chai": "^4.2.0",
+    "concurrently": "^4.1.0",
     "mocha": "^6.1.4",
+    "start-server-and-test": "^1.9.1",
     "supertest": "^4.0.2",
     "ts-node": "^8.2.0",
     "tslint": "^5.17.0",
