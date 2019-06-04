@@ -1,5 +1,7 @@
 # 🚀 rocketeer-node
 
+[![Build Status](https://travis-ci.org/kodeid/rocketeer.svg?branch=master)](https://travis-ci.org/kodeid/rocketeer)
+
 > AWS Lambda Serverless Helpers and Libraries
 
 ## Why ?
