@@ -29,3 +29,9 @@ functions:
       - http:
           method: get
           path: protected-mod
+  withEventValidator:
+    handler: functions/withEventValidator.handler
+    events:
+      - http:
+          method: post
+          path: validate-post

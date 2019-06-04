@@ -2,6 +2,9 @@
 import createError from 'http-errors';
 import Joi from 'joi';
 import _ from 'lodash';
+import { HandlerLambda } from 'middy';
+// import constant from '../constants';
+import utils from '../utils';
 
 interface IEventSchema {
   body?: any;
@@ -10,24 +13,11 @@ interface IEventSchema {
   queryStringParameters?: any;
 }
 
-const buildSchema = (def) => {
+const buildSchema = (def: any) => {
   const body = _.get(def, 'body', {});
   const headers = _.get(def, 'headers', {});
   const path = _.get(def, 'path', {});
   const query = _.get(def, 'query', {});
-
-  if (_.has(def, 'pagination')) {
-    query.offset = Joi.number().integer().default(0)
-      .min(0)
-      .allow('')
-      .error(createError(422, 'Parameter offset must be integer greater then 0'));
-    const max = _.get(def, 'pagination.max', 1000);
-    query.limit = Joi.number().integer().default(max)
-      .min(1)
-      .max(_.get(def, 'pagination.max', max))
-      .allow('')
-      .error(createError(422, `Parameter limit must be integer between 1 and ${max}`));
-  }
 
   const res: IEventSchema = {};
   if (_.size(body)) {
@@ -46,21 +36,30 @@ const buildSchema = (def) => {
   return res;
 };
 
-export default function eventValidator({ schema }) {
-  return {
-    before: (handler, next) => {
-      const res = Joi.validate(
-        handler.event,
-        buildSchema(schema),
-        { allowUnknown: true, stripUnknown: true },
-      );
-      if (res.error) {
-        throw createError(422, res.error.message);
-      }
-      next();
-    },
-  };
-}
+export default ({ schema }) => ({
+  before: (handler: HandlerLambda) => new Promise((resolve, reject) => {
+    const res = Joi.validate(
+      handler.event,
+      buildSchema(schema),
+      { allowUnknown: true, stripUnknown: true },
+    );
+    if (res.error) {
+      const message = 'invalid input';
+      const statusCode = 422;
+
+      return reject({ message, statusCode });
+    }
+    return resolve();
+  }),
+
+  onError: (handler: HandlerLambda) => {
+    const { message, statusCode }: any = handler.error;
+
+    const response = utils.JSON_RESPONSE(statusCode, { message });
+
+    return handler.callback(null, response);
+  },
+});
 
 export class Validation {
   public static getJoi() {
