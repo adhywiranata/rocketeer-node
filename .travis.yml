@@ -6,6 +6,7 @@ install:
   - cd service
   - npm install
   - cd ..
+before_script:
+  - npm start &
 script:
-  - npm start
   - npm test
