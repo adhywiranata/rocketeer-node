@@ -1,8 +1,8 @@
 {
   "name": "rocketeer-node",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "aws lambda wrapper library",
-  "main": "index.js",
+  "main": "dist/index.js",
   "directories": {
     "lib": "lib"
   },
