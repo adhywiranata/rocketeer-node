@@ -16,5 +16,5 @@ const withApiKeyHandler: APIGatewayProxyHandler = async (event, context) => {
 };
 
 export const handler = lambda(withApiKeyHandler, [
-  apiKeyAuthorizerMiddleware('dont-use-hard-coded-value-like-me', 'Token'),
+  apiKeyAuthorizerMiddleware('Token', 'dont-use-hard-coded-value-like-me'),
 ]);

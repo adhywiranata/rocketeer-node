@@ -1,5 +1,6 @@
 const request = require('supertest');
-const expect = require('chai').expect;
+// const expect = require('chai').expect;
+require('dotenv').config();
 
 const server = request(process.env.SERVICE_ENDPOINT);
 

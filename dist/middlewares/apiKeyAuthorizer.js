@@ -5,9 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var constants_1 = __importDefault(require("../constants"));
 var utils_1 = __importDefault(require("../utils"));
-exports.default = (function (apiKey, apiKeyHeaderKey) { return ({
+exports.default = (function (apiKeyHeaderKey, apiKey) { return ({
     before: function (handler) { return new Promise(function (resolve, reject) {
-        if (handler.event.headers[apiKeyHeaderKey || 'Api-App-Key'] === apiKey) {
+        if (handler.event.headers[apiKeyHeaderKey] === apiKey) {
             return resolve();
         }
         var message = constants_1.default.RESPONSE_MESSAGE.INVALID_TOKEN;

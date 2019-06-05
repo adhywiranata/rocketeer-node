@@ -3,9 +3,9 @@ import { HandlerLambda } from 'middy';
 import constant from '../constants';
 import utils from '../utils';
 
-export default (apiKey: string, apiKeyHeaderKey?: string) => ({
+export default (apiKeyHeaderKey: string, apiKey: string) => ({
   before: (handler: HandlerLambda) => new Promise((resolve, reject) => {
-    if (handler.event.headers[apiKeyHeaderKey || 'Api-App-Key'] === apiKey) {
+    if (handler.event.headers[apiKeyHeaderKey] === apiKey) {
       return resolve();
     }
 
