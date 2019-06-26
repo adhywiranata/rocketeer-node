@@ -4,8 +4,11 @@ import constant from '../constants';
 import utils from '../utils';
 
 export default (apiKeyHeaderKey: string, apiKey: string) => ({
-  before: (handler: HandlerLambda) => new Promise((resolve, reject) => {
-    if (handler.event.headers[apiKeyHeaderKey] === apiKey) {
+  before: ({ event }: HandlerLambda) => new Promise((resolve, reject) => {
+    const isFromScheduledEvent = !!event.source && event.source === 'aws.events' || false;
+    const isFromInvokedEvent = !!event.headers && event.headers[apiKeyHeaderKey] === apiKey || false;
+
+    if (isFromScheduledEvent || isFromInvokedEvent) {
       return resolve();
     }
 
