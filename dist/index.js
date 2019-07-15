@@ -6,4 +6,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./middlewares"));
 __export(require("./composeLambda"));
 __export(require("./utils"));
+__export(require("./testingLambda"));
 //# sourceMappingURL=index.js.map
