@@ -5,4 +5,5 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./middlewares"));
 __export(require("./composeLambda"));
+__export(require("./utils"));
 //# sourceMappingURL=index.js.map

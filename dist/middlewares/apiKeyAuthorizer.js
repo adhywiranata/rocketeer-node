@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var constants_1 = __importDefault(require("../constants"));
-var utils_1 = __importDefault(require("../utils"));
+var utils_1 = require("../utils");
 exports.default = (function (apiKeyHeaderKey, apiKey) { return ({
     before: function (_a) {
         var event = _a.event;
@@ -21,7 +21,7 @@ exports.default = (function (apiKeyHeaderKey, apiKey) { return ({
     },
     onError: function (handler) {
         var _a = handler.error, message = _a.message, statusCode = _a.statusCode;
-        var response = utils_1.default.JSON_RESPONSE(statusCode, { message: message });
+        var response = utils_1.jsonResponseUtils.failure({ message: message }, statusCode);
         return handler.callback(null, response);
     },
 }); });

@@ -4,7 +4,7 @@ import Joi from 'joi';
 import _ from 'lodash';
 import { HandlerLambda } from 'middy';
 // import constant from '../constants';
-import utils from '../utils';
+import { jsonResponseUtils } from '../utils';
 
 interface IEventSchema {
   body?: any;
@@ -55,7 +55,7 @@ export default ({ schema }) => ({
   onError: (handler: HandlerLambda) => {
     const { message, statusCode }: any = handler.error;
 
-    const response = utils.JSON_RESPONSE(statusCode, { message });
+    const response = jsonResponseUtils.failure({ message }, statusCode);
 
     return handler.callback(null, response);
   },

@@ -2,6 +2,7 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 
 import {
   eventValidatorMiddleware,
+  jsonResponseUtils,
   lambda,
   ValidationHelper,
 } from '../../dist';
@@ -14,13 +15,10 @@ const validationSchema = {
 };
 
 const withEventValidator: APIGatewayProxyHandler = async (event, context) => {
-  return {
-    body: JSON.stringify({
-      input: event,
-      message: 'Go Serverless Webpack (Typescript) v1.0! Your function executed successfully!',
-    }),
-    statusCode: 200,
-  };
+  return jsonResponseUtils.success({
+    input: event,
+    message: 'Go Serverless Webpack (Typescript) v1.0! Your function executed successfully!',
+  });
 };
 
 export const handler = lambda(withEventValidator, [

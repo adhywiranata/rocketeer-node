@@ -41,13 +41,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     result["default"] = mod;
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var warmer = __importStar(require("lambda-warmer"));
-var utils_1 = __importDefault(require("../utils"));
+var utils_1 = require("../utils");
 exports.default = (function () { return ({
     before: function (handler) { return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -62,7 +59,7 @@ exports.default = (function () { return ({
         });
     }); }); },
     onError: function (handler) {
-        var response = utils_1.default.JSON_RESPONSE(200, { message: 'warmed' });
+        var response = utils_1.jsonResponseUtils.failure({ message: 'warmed' }, 200);
         return handler.callback(null, response);
     },
 }); });

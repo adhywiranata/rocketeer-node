@@ -1,7 +1,7 @@
 import * as warmer from 'lambda-warmer';
 import { HandlerLambda } from 'middy';
 
-import utils from '../utils';
+import { jsonResponseUtils } from '../utils';
 
 export default () => ({
   before: (handler: HandlerLambda) => new Promise(async (resolve, reject) => {
@@ -13,7 +13,8 @@ export default () => ({
   }),
 
   onError: (handler: HandlerLambda) => {
-    const response = utils.JSON_RESPONSE(200, { message: 'warmed' });
+    const response = jsonResponseUtils.failure({ message: 'warmed' }, 200);
+
     return handler.callback(null, response);
   },
 });

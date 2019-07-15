@@ -1,7 +1,7 @@
 import { HandlerLambda } from 'middy';
 
 import constant from '../constants';
-import utils from '../utils';
+import { jsonResponseUtils } from '../utils';
 
 export default (apiKeyHeaderKey: string, apiKey: string) => ({
   before: ({ event }: HandlerLambda) => new Promise((resolve, reject) => {
@@ -21,7 +21,7 @@ export default (apiKeyHeaderKey: string, apiKey: string) => ({
   onError: (handler: HandlerLambda) => {
     const { message, statusCode }: any = handler.error;
 
-    const response = utils.JSON_RESPONSE(statusCode, { message });
+    const response = jsonResponseUtils.failure({ message }, statusCode);
 
     return handler.callback(null, response);
   },

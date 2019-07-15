@@ -8,7 +8,7 @@ var http_errors_1 = __importDefault(require("http-errors"));
 var joi_1 = __importDefault(require("joi"));
 var lodash_1 = __importDefault(require("lodash"));
 // import constant from '../constants';
-var utils_1 = __importDefault(require("../utils"));
+var utils_1 = require("../utils");
 var buildSchema = function (def) {
     var body = lodash_1.default.get(def, 'body', {});
     var headers = lodash_1.default.get(def, 'headers', {});
@@ -43,7 +43,7 @@ exports.default = (function (_a) {
         }); },
         onError: function (handler) {
             var _a = handler.error, message = _a.message, statusCode = _a.statusCode;
-            var response = utils_1.default.JSON_RESPONSE(statusCode, { message: message });
+            var response = utils_1.jsonResponseUtils.failure({ message: message }, statusCode);
             return handler.callback(null, response);
         },
     });
