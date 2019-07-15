@@ -1,0 +1,1 @@
+{"version":3,"file":"resultMock.js","sourceRoot":"","sources":["../../lib/testingLambda/resultMock.ts"],"names":[],"mappings":";;AAIA,IAAM,yBAAyB,GAAG,UAChC,OAAO,IACmB,OAAA,CAAC;IAC3B,IAAI,EAAE,OAAO,CAAC,IAAI,IAAI,IAAI;IAC1B,OAAO,EAAE,OAAO,CAAC,OAAO,IAAI,SAAS;IACrC,UAAU,EAAE,OAAO,CAAC,UAAU;CAC/B,CAAC,EAJ0B,CAI1B,CAAC;AAEH,kBAAe,yBAAyB,CAAC"}
