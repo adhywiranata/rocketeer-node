@@ -10,7 +10,7 @@ install:
   - npm run build
   - cd service
   - npm install
-  - sls deploy
+  # - sls deploy
   - cd ..
 script:
   - npm test
