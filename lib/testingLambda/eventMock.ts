@@ -1,9 +1,9 @@
-import {
-  APIGatewayEventRequestContext,
-  APIGatewayProxyEvent,
-} from 'aws-lambda';
+// import {
+//   APIGatewayEventRequestContext,
+//   APIGatewayProxyEvent,
+// } from 'aws-lambda';
 
-const apiGatewayContext: APIGatewayEventRequestContext = {
+const apiGatewayContext: any = {
   accountId: '',
   apiId: '',
   authorizer: null,
@@ -40,7 +40,7 @@ const apiGatewayContext: APIGatewayEventRequestContext = {
   stage: '',
 };
 
-const apiGatewayEventMock: APIGatewayProxyEvent = {
+const apiGatewayEventMock: any = {
   body: '{}',
   headers: {},
   httpMethod: 'GET',

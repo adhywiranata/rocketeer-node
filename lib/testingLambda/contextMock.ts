@@ -1,8 +1,8 @@
-import {
-  Context,
-} from 'aws-lambda';
+// import {
+//   Context,
+// } from 'aws-lambda';
 
-const apiGatewayContextMock: Context = {
+const apiGatewayContextMock: any = {
   awsRequestId: '',
   callbackWaitsForEmptyEventLoop: false,
   clientContext: undefined,

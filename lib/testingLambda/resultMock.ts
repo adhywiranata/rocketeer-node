@@ -1,10 +1,10 @@
-import {
-  APIGatewayProxyResult,
-} from 'aws-lambda';
+// import {
+//   APIGatewayProxyResult,
+// } from 'aws-lambda';
 
 const apiGatewayProxyResultMock = (
   payload,
-): APIGatewayProxyResult => ({
+): any => ({
   body: payload.body || '{}',
   headers: payload.headers || undefined,
   statusCode: payload.statusCode,
